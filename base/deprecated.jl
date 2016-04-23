@@ -1073,6 +1073,12 @@ end
 @deprecate bitunpack(B::BitArray) Array(B)
 @deprecate bitpack(A::AbstractArray) BitArray(A)
 
+@deprecate ==(x::Char, y::Integer) UInt32(x) == y
+@deprecate ==(x::Integer, y::Char) x == UInt32(y)
+# delete these methods along with deprecations:
+isequal(x::Char, y::Integer) = false
+isequal(x::Integer, y::Char) = false
+
 # During the 0.5 development cycle, do not add any deprecations below this line
 # To be deprecated in 0.6
 
